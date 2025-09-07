@@ -62,8 +62,11 @@
           animation: fadeIn 1s ease-in-out forwards;
         }
         @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in-on-scroll {
+            opacity: 0;
         }
     </style>
 </head>
@@ -73,7 +76,7 @@
         <!-- Header Section -->
         <header class="text-center mb-12 flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-8">
             <div class="w-24 h-24 md:w-32 md:h-32 rounded-full overflow-hidden border-4 border-slate-700 shadow-lg">
-                <img src="./images/generation-1519f2d5-2ee8-4ca2-8d16-905581439707.png" alt="Sharad Srivastav's profile picture" class="w-full h-full object-cover">
+                <img src="./images/generation-1519f2d5-2ee8-4ca2-8d16-905581439707.jpg" alt="Sharad Srivastav's profile picture" class="w-full h-full object-cover">
             </div>
             <div>
                 <h1 class="text-4xl md:text-5xl font-bold text-sky-400">Sharad Srivastav</h1>
@@ -92,7 +95,7 @@
         </header>
 
         <!-- Impact Metrics Section -->
-        <section id="impact" class="mb-16">
+        <section id="impact" class="mb-16 fade-in-on-scroll">
              <h2 class="text-3xl font-bold text-center mb-8">Career Impact at a Glance</h2>
              <p class="text-center text-slate-300 max-w-2xl mx-auto mb-10">This section provides a quick, high-level overview of the key performance indicators and achievements throughout my career. These metrics reflect a consistent focus on client satisfaction, user support, and delivering tangible value.</p>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-center">
@@ -116,7 +119,7 @@
         </section>
 
         <!-- Experience Section -->
-        <section id="experience" class="mb-16">
+        <section id="experience" class="mb-16 fade-in-on-scroll">
             <h2 class="text-3xl font-bold text-center mb-8">Professional Experience</h2>
             <p class="text-center text-slate-300 max-w-2xl mx-auto mb-12">The timeline below details my career progression and key responsibilities. Click on each role to see a summary of my contributions and the skills I applied. This interactive format allows for a focused view of my journey from System Engineer to a leadership role at PwC.</p>
             <div class="flex flex-col md:flex-row gap-12">
@@ -139,7 +142,7 @@
         </section>
         
         <!-- Innovation Spotlight -->
-        <section id="innovation" class="mb-16">
+        <section id="innovation" class="mb-16 fade-in-on-scroll">
             <h2 class="text-3xl font-bold text-center mb-8">Innovation Spotlight: AI in Log Analysis</h2>
             <p class="text-center text-slate-300 max-w-2xl mx-auto mb-10">A key initiative I led involved integrating modern AI capabilities into our support workflow. This section highlights a project where I engineered GPT-based prompts to analyze complex backend logs, which dramatically improved our team's efficiency in diagnosing and resolving critical issues.</p>
             <div class="bg-slate-800 p-6 md:p-8 rounded-lg shadow-lg border border-slate-700 flex flex-col lg:flex-row items-center gap-8">
@@ -154,7 +157,7 @@
         </section>
 
         <!-- Skills Section -->
-        <section id="skills">
+        <section id="skills" class="fade-in-on-scroll">
             <h2 class="text-3xl font-bold text-center mb-8">Core Competencies & Skills</h2>
             <p class="text-center text-slate-300 max-w-2xl mx-auto mb-10">This area outlines my technical and professional skill set, categorized for clarity. From database management and scripting to modern support platforms and cloud infrastructure, these are the tools and methodologies I use to deliver effective technical support and leadership.</p>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -410,6 +413,21 @@
             }, { threshold: 0.5 });
 
             observer.observe(innovationSection);
+            
+            // Intersection Observer for fade-in effect on sections
+            const sections = document.querySelectorAll('.fade-in-on-scroll');
+            const sectionObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('fade-in');
+                        sectionObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.2 });
+
+            sections.forEach(section => {
+                sectionObserver.observe(section);
+            });
         });
     </script>
 </body>
