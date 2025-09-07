@@ -10,12 +10,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <!-- Chosen Palette: Tech Noir (Dark charcoal, muted electric blue, and slate gray) -->
-    <!-- Application Structure Plan: The SPA is structured as a modern portfolio page. It starts with a hero section for immediate impact, followed by a dashboard-style metrics section to quantify achievements. A skills grid provides a quick overview of competencies. The core experience is an an interactive vertical timeline, allowing users to explore job history without information overload. A dedicated "Innovation Spotlight" section uses a chart to highlight the most impactful AI-related achievement. A new "Generate Cover Letter" section is added, powered by the Gemini API, to showcase practical application of GenAI skills. This structure was chosen to guide the user from high-level impact to detailed experience and then a hands-on demonstration of a core skill. -->
+    <!-- Application Structure Plan: The SPA is structured as a modern portfolio page. It starts with a hero section for immediate impact, followed by a dashboard-style metrics section to quantify achievements. A skills grid provides a quick overview of competencies. The core experience is an an interactive vertical timeline, allowing users to explore job history without information overload. A dedicated "Innovation Spotlight" section uses a chart to highlight the most impactful AI-related achievement. This structure was chosen to guide the user from high-level impact to detailed experience and then a hands-on demonstration of a core skill. -->
     <!-- Visualization & Content Choices: 
         - Impact Metrics: Goal: Inform/Impress -> Method: Animated number counters in cards -> Interaction: Count-up animation on load -> Justification: Dynamically showcases key achievements for immediate impact. (Vanilla JS).
         - Experience Timeline: Goal: Inform/Organize -> Method: Vertical timeline with clickable nodes -> Interaction: Clicking a job title updates a detail pane with responsibilities and achievements -> Justification: More engaging and less cluttered than a static list; allows for focused exploration. (Vanilla JS).
         - Innovation Spotlight (Log Analysis): Goal: Compare/Highlight -> Method: Bar chart -> Viz: "Before vs. After AI" comparison for root cause analysis time -> Interaction: Chart animates on scroll, tooltips on hover -> Justification: Visually quantifies the 30% efficiency gain, making the AI skill tangible and impressive. (Chart.js).
-        - Cover Letter Generator: Goal: Engage/Demonstrate -> Method: Interactive form with input and output areas, and a generation button -> Interaction: User inputs job description, clicks button, and an LLM-generated cover letter appears -> Justification: Provides a practical, real-world example of my "Prompt Engineering" skill mentioned in the resume. (Gemini API via Fetch).
     -->
     <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
     <style>
@@ -72,18 +71,23 @@
 
     <div class="container mx-auto p-4 md:p-8 max-w-6xl">
         <!-- Header Section -->
-        <header class="text-center mb-12">
-            <h1 class="text-4xl md:text-5xl font-bold text-sky-400">Sharad Srivastav</h1>
-            <p class="text-xl md:text-2xl text-slate-400 mt-2">Senior Product Support Engineer & Technical Lead</p>
-            <p class="mt-4 max-w-3xl mx-auto text-slate-300">
-                A highly motivated and experienced technical support leader with over six years of expertise in application support, performance optimization, and team leadership. Proven ability to resolve complex technical challenges for enterprise clients and drive efficiency through innovation and automation.
-            </p>
-            <div class="mt-6 flex justify-center items-center space-x-6 text-slate-400">
-                <a href="mailto:srivastav.sharadsd@gmail.com" class="hover:text-sky-400 transition-colors">srivastav.sharadsd@gmail.com</a>
-                <span>&bull;</span>
-                <a href="tel:+919450001060" class="hover:text-sky-400 transition-colors">+91-9450001060</a>
-                <span>&bull;</span>
-                <a href="https://www.linkedin.com/in/sharad-srivastav-177438118/" target="_blank" class="hover:text-sky-400 transition-colors">LinkedIn Profile</a>
+        <header class="text-center mb-12 flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-8">
+            <div class="w-24 h-24 md:w-32 md:h-32 rounded-full overflow-hidden border-4 border-slate-700 shadow-lg">
+                <img src="https://i.ibb.co/3Wf2W5G/generation-1519f2d5-2ee8-4ca2-8d16-905581439707.jpg" alt="Sharad Srivastav's profile picture" class="w-full h-full object-cover">
+            </div>
+            <div>
+                <h1 class="text-4xl md:text-5xl font-bold text-sky-400">Sharad Srivastav</h1>
+                <p class="text-xl md:text-2xl text-slate-400 mt-2">Senior Product Support Engineer & Technical Lead</p>
+                <p class="mt-4 max-w-3xl mx-auto text-slate-300">
+                    A highly motivated and experienced technical support leader with over six years of expertise in application support, performance optimization, and team leadership. Proven ability to resolve complex technical challenges for enterprise clients and drive efficiency through innovation and automation.
+                </p>
+                <div class="mt-6 flex justify-center items-center space-x-6 text-slate-400">
+                    <a href="mailto:srivastav.sharadsd@gmail.com" class="hover:text-sky-400 transition-colors">srivastav.sharadsd@gmail.com</a>
+                    <span>&bull;</span>
+                    <a href="tel:+919450001060" class="hover:text-sky-400 transition-colors">+91-9450001060</a>
+                    <span>&bull;</span>
+                    <a href="https://www.linkedin.com/in/sharad-srivastav-177438118/" target="_blank" class="hover:text-sky-400 transition-colors">LinkedIn Profile</a>
+                </div>
             </div>
         </header>
 
@@ -142,36 +146,12 @@
                 <div class="lg:w-1/2">
                     <h3 class="text-2xl font-bold mb-4 text-sky-400">30% Reduction in Debugging Time</h3>
                     <p class="text-slate-300 mb-4">By developing and implementing AI-powered scripts, we automated the initial analysis of error patterns and logs. This allowed the support team to bypass hours of manual review and focus directly on the root cause, leading to faster resolutions for L2/L3 tickets and higher client satisfaction.</p>
-                    <p class="text-slate-400">The chart illustrates the average time taken for root cause identification before and after the implementation of this AI-driven solution, demonstrating a tangible improvement in our operational workflow.</p>
                 </div>
                 <div class="lg:w-1/2 w-full chart-container h-80 max-w-lg mx-auto">
                     <canvas id="performanceChart"></canvas>
                 </div>
             </div>
         </section>
-
-        <!-- AI-Powered Cover Letter Generator -->
-        <section id="cover-letter-generator" class="mb-16">
-            <h2 class="text-3xl font-bold text-center mb-8">✨ AI-Powered Cover Letter Generator</h2>
-            <p class="text-center text-slate-300 max-w-2xl mx-auto mb-10">As a testament to my skills in Prompt Engineering and GenAI, this tool can generate a customized cover letter for a job description you provide. It showcases how AI can be leveraged for practical, real-world tasks like job applications, using my professional background as the source material.</p>
-            <div class="bg-slate-800 p-6 md:p-8 rounded-lg shadow-lg border border-slate-700">
-                <div class="mb-6">
-                    <label for="job-description" class="block text-sm font-medium text-slate-400">Paste Job Description:</label>
-                    <textarea id="job-description" rows="10" class="mt-1 block w-full rounded-md border-slate-700 bg-slate-900 text-slate-200 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm p-3"></textarea>
-                </div>
-                <div class="flex items-center justify-between">
-                    <button id="generate-button" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-sky-600 hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500 transition-colors">
-                        Generate Cover Letter
-                    </button>
-                    <div id="loading-spinner" class="hidden spinner"></div>
-                </div>
-                <div id="cover-letter-output" class="mt-8 p-6 bg-slate-900 rounded-lg border border-slate-700 hidden fade-in">
-                    <h3 class="text-xl font-bold mb-4 text-sky-400">Generated Cover Letter</h3>
-                    <p class="whitespace-pre-wrap text-slate-300" id="cover-letter-text"></p>
-                </div>
-            </div>
-        </section>
-
 
         <!-- Skills Section -->
         <section id="skills">
@@ -418,7 +398,7 @@
 
             // Intersection Observer for chart animation
             const innovationSection = document.getElementById('innovation');
-            const observer = new Intersection-Observer((entries) => {
+            const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         if (!performanceChart) {
@@ -430,120 +410,8 @@
             }, { threshold: 0.5 });
 
             observer.observe(innovationSection);
-
-            // Gemini API Integration
-            const resumeText = `
-                Sharad Srivastav
-                srivastav.sharadsd@gmail.com | +91-9450001060 | HAL Colony, Kanpur, UP | in sharadsrivastav
-                EXPERIENCE
-                PWC ASSISTANT MANAGER-TECHNICAL SUPPORT LEAD
-                Sep 2022 - Present | Delhi NCR
-                • Led technical support team for 200+ clients on a SaaS Compliance Tool (SaaS, Enterprise Edition), handling L1/L2/L3 queries, priority accounts and complex database/backend/Server issues.
-                • Team leadership & training - headed the support team, on-boarding new members through structured KT sessions, shadowing, and live issue resolution to accelerate tool/database proficiency.
-                • Performance optimization & upgrades - executed major Tool upgrade projects across client environments, improving speed, stability, and efficiency; implemented proactive prevention & resolution strategies.
-                • Cross functional collaboration - partnered with development teams to investigate & resolve critical issues, streamline processes.
-                • Innovation & automation - leveraged Python for planned Al capability integration, enhancing future tool intelligence and automation potential.
-                • Engineered GPT-based prompts to analyze backend logs and error patterns, reducing root cause identification time by 30% across L2/L3 tickets.
-                • Utilized GPT-based scripts to analyze backend logs and suggest probable root causes, cutting debugging time by 30%
-                TCS SYSTEM ENGINEER - TECHNICAL SUPPORT LEAD
-                Jul 2018 Sep 2022 | Noida, UP
-                • End to End technical support - Led troubleshooting, debugging (Core Java, .NET) and post go live application support to ensure seamless operations.
-                • Data & process expertise - Delivered data scripting and implementation, managed services/printer configurations, and maintained system reliability.
-                • Quality assurance - Prepared and executed detailed test plans in ALM Tool to validate functionality and performance before release.
-                • Collaboration & knowledge sharing - Worked in Agile teams, conducted knowledge transfer sessions, and enabled smooth onboarding for team members.
-                • Resolved complex customer issues in real time through in depth root cause analysis, alongside proactive monitoring, of Dev, Test, UAT, and Production servers to safeguard stability and performance.
-                SKILLS
-                PROGRAMMING & SCRIPTING: SQL, PL/SQL, Python Basics, Prompt Engineering for GenAI (GPT, Copilot, Claude)
-                DATABASE & QUERY TOOLS: SSMS, SQL Developer, Query Optimization, Database Scripting
-                TOOLS & PLATFORMS: Freshdesk, JIRA, ServiceNow, Azure Boards, Visual Studio, ALM
-                BACKEND & APPLICATION SUPPORT: Incident Management, Change Management, Root Cause Analysis, Server/Service Monitoring & Troubleshooting
-                CLOUD/INFRASTRUCTURE: Windows Server Administration, Azure Services (basic)
-                IMPACT METRICS: Client Served - 200+, Users Served - 50K+, Client/Stakeholder Satisfaction - 98%, Revenue/Cost Saving- $100K+
-            `;
-            const generateButton = document.getElementById('generate-button');
-            const jobDescriptionInput = document.getElementById('job-description');
-            const coverLetterOutput = document.getElementById('cover-letter-output');
-            const coverLetterText = document.getElementById('cover-letter-text');
-            const loadingSpinner = document.getElementById('loading-spinner');
-            
-            const makeGeminiApiCall = async (prompt) => {
-                const apiKey = "";
-                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
-                
-                const payload = {
-                    contents: [{
-                        parts: [{ text: prompt }]
-                    }],
-                    systemInstruction: {
-                        parts: [{ text: `You are a helpful assistant that generates a professional cover letter based on a user's resume and a job description. Use the provided resume to create a persuasive cover letter. The cover letter should be a formal business letter, approximately 3-4 paragraphs long. Do not include a subject line or contact information. The content should be positive and directly connect the candidate's skills and accomplishments from the resume to the job description. The candidate is Sharad Srivastav. Do not mention that you are an AI or language model.` }]
-                    }
-                };
-                
-                let response;
-                let retryCount = 0;
-                const maxRetries = 3;
-                while (retryCount < maxRetries) {
-                    try {
-                        response = await fetch(apiUrl, {
-                            method: 'POST',
-                            headers: { 'Content-Type': 'application/json' },
-                            body: JSON.stringify(payload)
-                        });
-                        if (response.status === 429) {
-                            console.warn(`Rate limit hit. Retrying in ${Math.pow(2, retryCount)} seconds...`);
-                            await new Promise(res => setTimeout(res, Math.pow(2, retryCount) * 1000));
-                            retryCount++;
-                            continue;
-                        }
-                        if (!response.ok) {
-                            throw new Error(`API returned status: ${response.status}`);
-                        }
-                        const result = await response.json();
-                        const generatedText = result.candidates[0].content.parts[0].text;
-                        return generatedText;
-                    } catch (e) {
-                        console.error(e);
-                        retryCount++;
-                    }
-                }
-                throw new Error('Failed to fetch from API after multiple retries.');
-            };
-
-            generateButton.addEventListener('click', async () => {
-                const jobDescription = jobDescriptionInput.value;
-                if (!jobDescription.trim()) {
-                    coverLetterOutput.classList.remove('hidden');
-                    coverLetterText.innerText = 'Please provide a job description to generate a cover letter.';
-                    return;
-                }
-                
-                loadingSpinner.classList.remove('hidden');
-                generateButton.disabled = true;
-                coverLetterOutput.classList.add('hidden');
-                
-                const prompt = `
-                    Generate a cover letter for the following resume and job description.
-                    
-                    Resume:
-                    ${resumeText}
-                    
-                    Job Description:
-                    ${jobDescription}
-                `;
-                
-                try {
-                    const letter = await makeGeminiApiCall(prompt);
-                    coverLetterText.innerText = letter;
-                    coverLetterOutput.classList.remove('hidden');
-                } catch (error) {
-                    coverLetterText.innerText = `Error generating cover letter: ${error.message}`;
-                    coverLetterOutput.classList.remove('hidden');
-                } finally {
-                    loadingSpinner.classList.add('hidden');
-                    generateButton.disabled = false;
-                }
-            });
         });
     </script>
 </body>
 </html>
+
